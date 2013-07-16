@@ -1,0 +1,28 @@
+{
+  "name": "shapeoko-jogger",
+  "version": "0.0.0",
+  "description": "Control a ShapeOko (or other gear which speaks G-Code) via the interwebs",
+  "main": "jogger.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/randallagordon/shapeoko-jogger/"
+  },
+  "keywords": [
+    "CNC",
+    "G-Code",
+    "ShapeOko",
+    "Hammer.js"
+  ],
+  "author": "Randall A. Gordon",
+  "license": "MIT",
+  "dependencies": {
+    "serialport": "~1.1.1",
+    "zappajs": "~0.4.22",
+    "connect-assets": "~2.4.3",
+    "stylus": "~0.34.1",
+    "nib": "~0.9.2"
+  }
+}
