@@ -1,8 +1,8 @@
 serialport = require "serialport"
 {SerialPort} = serialport
 
-port = "/dev/ttyACM0" # your 'Oko's port here
-server = "http://192.168.1.130:3000"
+port = "/dev/ttyACM1" # your 'Oko's port here
+server = "http://192.168.1.30:3000"
 
 oko = new SerialPort port, {
   baudrate: 9600,
@@ -52,15 +52,14 @@ require('zappajs') ->
         title "NodeOko"
         meta name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=1"
         script src: "http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"
-        script src: "http://eightmedia.github.com/hammer.js/dist/hammer.min.js"
-        script src: "http://eightmedia.github.com/hammer.js/dist/jquery.hammer.min.js"
+        script src: "https://cdn.rawgit.com/EightMedia/hammer.js/3ea4891aff20fe398950c40257a26f238d8cd77b/hammer.min.js"
         script src: "/script.js"
         link rel:'stylesheet', href:'/style.css'
         div id: 'jog'
 
   @coffee '/script.js': ->
     $ ->
-      server = "http://192.168.1.130:3000"
+      server = "http://192.168.1.30:3000"
       $.get "#{server}/i"
       $.get "#{server}/feed/5000"
 
@@ -79,9 +78,8 @@ require('zappajs') ->
 
       every 200, momentum.tick
 
-      $('#jog')
-        .hammer({ drag_min_distance: 0 })
-        .bind "drag", (ev) ->
+      Hammer(document.getElementById("jog"))
+        .on "drag", (ev) ->
           momentum.x += (  ev.gesture.deltaX / 1 )
           momentum.y += ( -ev.gesture.deltaY / 1 )
 
